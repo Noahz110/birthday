@@ -32,8 +32,18 @@
       }
     </style>
     <script>
-      // Simple function to ensure the button works
       function navigateToDessert() {
+        const selectedFoods = document.querySelectorAll('input[name="food"]:checked');
+        const foodValues = [];
+        selectedFoods.forEach(checkbox => {
+          foodValues.push(checkbox.value);
+        });
+
+        // Store selected food values in localStorage
+        // We store it as a JSON string because localStorage only stores strings
+        localStorage.setItem('selectedFood', JSON.stringify(foodValues)); 
+
+        // Navigate to the next page
         window.location.href = 'dessert.html';
       }
     </script>
