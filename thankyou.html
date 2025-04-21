@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank you</title>
+    <link rel="stylesheet" href="css/lastpage.css" />
+  </head>
+  <body>
+    <div id="thankyou"><b>Thank you</b></div>
+
+    <div style="text-align:center"> 
+      
+      <video id="video1" width="700">
+        <source src="video_out.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <br><br>
+      <button class="button" onclick="volumeDown()">🔊-</button> 
+      <button id="playPauseButton" class="button" onclick="playPause()"><b>Play/Pause</b></button> 
+      <button class="button" onclick="volumeUp()">🔊+</button> 
+      
+    </div> 
+
+    <br />
+    <!-- <audio controls autoplay loop>
+      <source src="blue.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio> -->
+    <h1>Từ từ đừng đi!</h1>
+    <button class="button" onclick="location.href='date.html'">
+      Bấm vào đây ik uia
+    </button>
+  </body>
+</html>
+
+
+<script> 
+var myVideo = document.getElementById("video1"); 
+
+function playPause() { 
+  if (myVideo.paused) 
+    myVideo.play(); 
+  else 
+    myVideo.pause(); 
+} 
+
+function volumeUp() { 
+    myVideo.volume = myVideo.volume + 0.2;
+} 
+
+function volumeDown() { 
+    myVideo.volume = myVideo.volume - 0.2;
+} 
+</script>

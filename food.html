@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Selection</title>
+    <link rel="stylesheet" href="css/food.css" />
+    <style>
+      /* Adding styles for bottom images */
+      .bottom-images {
+        position: fixed;
+        bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        box-sizing: border-box;
+        z-index: 10;
+      }
+      
+      .bottom-image {
+        width: auto;
+        height: 300px; /* Setting fixed height for both images */
+        border-radius: 10px;
+        object-fit: cover;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      
+      /* Add padding to the bottom of the page to make space for fixed positioned images */
+      body {
+        padding-bottom: 140px;
+      }
+    </style>
+    <script>
+      // Simple function to ensure the button works
+      function navigateToDessert() {
+        window.location.href = 'dessert.html';
+      }
+    </script>
+  </head>
+  <body>
+    <div id="foodquestion">
+      <b>U muốn ăn món gì?</b>
+    </div>
+
+    <div class="food-selection">
+      <div class="food-item">
+        <img src="food/kfc.jpg" alt="KFC" />
+        <label
+          ><input
+            type="checkbox"
+            name="food"
+            value="KFC"
+          />
+          KFCCCC</label
+        >
+      </div>
+      <div class="food-item">
+        <img src="food/dog.jpeg" alt="dog" />
+        <label
+          ><input type="checkbox" name="food" value="hotdog" /> Chúc chích 🤭</label
+        >
+      </div>
+      <div class="food-item">
+        <img src="food/anchay.jpg" alt="anchay" />
+        <label
+          ><input type="checkbox" name="food" value="anchay" /> Ăn Chayyy 🧘🧘🏻‍♂️</label
+        >
+      </div>
+      <div class="food-item">
+        <img src="food/long.jpeg" alt="long" />
+        <label><input type="checkbox" name="food" value="long" /> Lòng Nướng 🤭</label>
+      </div>
+      <div class="food-item">
+        <img src="food/vitquay.jpg" alt="vitquay" />
+        <label><input type="checkbox" name="food" value="vitquay" /> Vịt quayyy 🏠❤️</label>
+      </div>
+      <div class="food-item">
+        <img src="food/lau.png" alt="lau" />
+        <label><input type="checkbox" name="food" value="lau" /> Lẩuuu ♨️🥓</label>
+      </div>
+      <div class="food-item">
+        <img src="food/bbq.jpg" alt="bbq" />
+        <label><input type="checkbox" name="food" value="bbq" /> Nướngggg 🥩</label>
+      </div>
+      <div class="food-item food-item-large">
+        <img src="food/sbox.jpg" alt="sbox" />
+        <label><input type="checkbox" name="food" value="sbox" /> SpaghettiBoxxx 🍔🥔😋🤤🍕</label>
+      </div>
+    </div>
+    <button class="button" onclick="navigateToDessert()">
+      Tiếp Ik
+    </button>
+
+    <!-- Added bottom images -->
+    <div class="bottom-images">
+      <img src="food/thumbnail.jpg" alt="Bottom left image" class="bottom-image">
+      <img src="food/eating.jpg" alt="Bottom right image" class="bottom-image">
+    </div>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+body {
+  text-align: center;
+  margin-top: 30px;
+  font-family: "Courier";
+  background-color: #fff5e4;
+  color: #ff9494;
+}
+#foodquestion {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+.food-selection { /* Added rule */
+  position: relative; /* Establish stacking context */
+  z-index: 11; /* Ensure it's above the fixed images (z-index: 10) */
+}
+.food-item {
+  display: inline-block;
+  margin: 10px;
+  vertical-align: top;
+  color: #ff9494;
+}
+.food-item img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 5px solid #ff9494;
+  object-fit: cover;
+  padding: 10px;
+}
+/* Style for the larger food item */
+.food-item-large img {
+  height: 250px; /* Larger height */
+  width: 250px;  /* Larger width */
+  /* Inherits border, border-radius, object-fit, padding from .food-item img */
+}
+.food-item label {
+  display: block;
+}
+.button {
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 20px auto;
+  display: block;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
