@@ -5,6 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activities</title>
     <link rel="stylesheet" href="css/activities.css" />
+    <script>
+      function submitAllChoices() {
+        // Get stored food choices
+        const foodValues = JSON.parse(localStorage.getItem('selectedFood') || '[]');
+        if (foodValues.length === 0) {
+          alert('Vui lòng chọn thức ăn trước!');
+          return;
+        }
+        
+        // Get stored dessert choices
+        const dessertValues = JSON.parse(localStorage.getItem('selectedDessert') || '[]');
+        if (dessertValues.length === 0) {
+          alert('Vui lòng chọn tráng miệng trước!');
+          return;
+        }
+        
+        // Get current activity choices
+        const selectedActivities = document.querySelectorAll('input[name="activities"]:checked');
+        if (selectedActivities.length === 0) {
+          alert('Vui lòng chọn ít nhất một hoạt động!');
+          return;
+        }
+        
+        // Add loading indicator
+        const button = document.querySelector('.button');
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Đang gửi...';
+
+        // Create a hidden iframe with name attribute
+        const iframeName = 'hidden_iframe_' + Math.floor(Math.random() * 1000);
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('name', iframeName);
+        iframe.setAttribute('id', 'hidden_iframe');
+        iframe.setAttribute('style', 'display:none');
+        document.body.appendChild(iframe);
+        
+        // Create the form element
+        const form = document.createElement('form');
+        form.setAttribute('action', 'https://docs.google.com/forms/d/e/1FAIpQLSf8kuGT2265Ss2QCrWi7hiwrM2KIpY7zzkMZV-S4nNEnXSQyQ/formResponse');
+        form.setAttribute('method', 'post');
+        form.setAttribute('target', iframeName);
+        form.setAttribute('id', 'submission_form');
+        
+        // Add food choices to form
+        foodValues.forEach(value => {
+          const input = document.createElement('input');
+          input.setAttribute('type', 'hidden');
+          input.setAttribute('name', 'entry.1286235537');
+          input.setAttribute('value', value);
+          form.appendChild(input);
+        });
+        
+        // Add dessert choices to form
+        dessertValues.forEach(value => {
+          const input = document.createElement('input');
+          input.setAttribute('type', 'hidden');
+          input.setAttribute('name', 'entry.874429333');
+          input.setAttribute('value', value);
+          form.appendChild(input);
+        });
+        
+        // Add activity choices to form
+        selectedActivities.forEach(checkbox => {
+          const input = document.createElement('input');
+          input.setAttribute('type', 'hidden');
+          input.setAttribute('name', 'entry.1394952858');
+          input.setAttribute('value', checkbox.value);
+          form.appendChild(input);
+        });
+        
+        // Append the form to the body
+        document.body.appendChild(form);
+        
+        // Set up a listener for iframe load completion
+        iframe.onload = function() {
+          setTimeout(function() {
+            // Clean up
+            if (document.getElementById('submission_form')) {
+              document.getElementById('submission_form').remove();
+            }
+            if (document.getElementById('hidden_iframe')) {
+              document.getElementById('hidden_iframe').remove();
+            }
+            
+            // Clear stored choices
+            localStorage.removeItem('selectedFood');
+            localStorage.removeItem('selectedDessert');
+            
+            // Navigate to last page
+            window.location.href = 'thankyou.html';
+          }, 500);
+        };
+        
+        // Submit the form
+        form.submit();
+      }
+
+      // Check if we have required data in localStorage when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        const foodValues = JSON.parse(localStorage.getItem('selectedFood') || '[]');
+        const dessertValues = JSON.parse(localStorage.getItem('selectedDessert') || '[]');
+        
+        if (foodValues.length === 0 && dessertValues.length === 0) {
+          alert('Vui lòng chọn thức ăn và tráng miệng trước!');
+          // Redirect to the appropriate page
+          window.location.href = 'index.html'; // Adjust this to your first page
+        }
+      });
+    </script>
   </head>
   <body>
     <div id="activityquestion"><b>Làm gìiii</b></div>
@@ -15,7 +125,7 @@
           ><input
             type="checkbox"
             name="activities"
-            value="bongngo"
+            value="popcorn"
           />Lấy bỏng ngôôô</label
         >
       </div>
@@ -35,7 +145,7 @@
           ><input
             type="checkbox"
             name="activities"
-            value="reviewphim"
+            value="xemphim"
           />Xem review phimmm</label
         >
       </div>
@@ -45,12 +155,12 @@
           ><input
             type="checkbox"
             name="activities"
-            value="yeu"
+            value="yeume"
           />Yêu meeeeee :3</label
         >
       </div>
     </div>
-    <button class="button" onclick="location.href='lastpage.html'">
+    <button class="button" onclick="submitAllChoices()">
       Tiếp
     </button>
   </body>

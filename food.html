@@ -32,8 +32,18 @@
       }
     </style>
     <script>
-      // Simple function to ensure the button works
       function navigateToDessert() {
+        const selectedFoods = document.querySelectorAll('input[name="food"]:checked');
+        const foodValues = [];
+        selectedFoods.forEach(checkbox => {
+          foodValues.push(checkbox.value);
+        });
+
+        // Store selected food values in localStorage
+        // We store it as a JSON string because localStorage only stores strings
+        localStorage.setItem('selectedFood', JSON.stringify(foodValues)); 
+
+        // Navigate to the next page
         window.location.href = 'dessert.html';
       }
     </script>
@@ -58,34 +68,34 @@
       <div class="food-item">
         <img src="food/dog.jpeg" alt="dog" />
         <label
-          ><input type="checkbox" name="food" value="hotdog" /> Chúc chích 🤭</label
+          ><input type="checkbox" name="food" value="Hotdog" /> Chúc chích 🤭</label
         >
       </div>
       <div class="food-item">
         <img src="food/anchay.jpg" alt="anchay" />
         <label
-          ><input type="checkbox" name="food" value="anchay" /> Ăn Chayyy 🧘🧘🏻‍♂️</label
+          ><input type="checkbox" name="food" value="Anchay" /> Ăn Chayyy 🧘🧘🏻‍♂️</label
         >
       </div>
       <div class="food-item">
         <img src="food/long.jpeg" alt="long" />
-        <label><input type="checkbox" name="food" value="long" /> Lòng Nướng 🤭</label>
+        <label><input type="checkbox" name="food" value="Longnuong" /> Lòng Nướng 🤭</label>
       </div>
       <div class="food-item">
         <img src="food/vitquay.jpg" alt="vitquay" />
-        <label><input type="checkbox" name="food" value="vitquay" /> Vịt quayyy 🏠❤️</label>
+        <label><input type="checkbox" name="food" value="Vitquay" /> Vịt quayyy 🏠❤️</label>
       </div>
       <div class="food-item">
         <img src="food/lau.png" alt="lau" />
-        <label><input type="checkbox" name="food" value="lau" /> Lẩuuu ♨️🥓</label>
+        <label><input type="checkbox" name="food" value="Lau" /> Lẩuuu ♨️🥓</label>
       </div>
       <div class="food-item">
         <img src="food/bbq.jpg" alt="bbq" />
-        <label><input type="checkbox" name="food" value="bbq" /> Nướngggg 🥩</label>
+        <label><input type="checkbox" name="food" value="BBQ" /> Nướngggg 🥩</label>
       </div>
       <div class="food-item food-item-large">
         <img src="food/sbox.jpg" alt="sbox" />
-        <label><input type="checkbox" name="food" value="sbox" /> SpaghettiBoxxx 🍔🥔😋🤤🍕</label>
+        <label><input type="checkbox" name="food" value="Sbox" /> SpaghettiBoxxx 🍔🥔😋🤤🍕</label>
       </div>
     </div>
     <button class="button" onclick="navigateToDessert()">
